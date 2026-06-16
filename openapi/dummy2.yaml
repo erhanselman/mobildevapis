@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: DummyJSON Ürünler API Örneği
+  description: Docusaurus ve Redocly için test amaçlı oluşturulmuş OpenAPI şeması.
+  version: 1.0.0
+servers:
+  - url: https://dummyjson.com
+paths:
+  /products/1:
+    get:
+      summary: Tek bir ürün getirir
+      description: ID'si 1 olan ürünün detaylarını döner.
+      responses:
+        '200':
+          description: Başarılı istek
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: "Essence Mascara Lash Princess"
+                  description:
+                    type: string
+                    example: "The Essence Mascara Lash Princess Volume Mascara features a unique cobra-shaped brush."
+                  category:
+                    type: string
+                    example: "beauty"
+                  price:
+                    type: number
+                    format: float
+                    example: 9.99
+                  discountPercentage:
+                    type: number
+                    format: float
+                    example: 7.17
+                  rating:
+                    type: number
+                    format: float
+                    example: 4.94
+                  stock:
+                    type: integer
+                    example: 5
+                  brand:
+                    type: string
+                    example: "Essence"
+                  availabilityStatus:
+                    type: string
+                    example: "Low Stock"

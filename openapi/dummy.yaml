@@ -1,0 +1,107 @@
+openapi: 3.0.3
+
+info:
+  title: DummyJSON Users API
+  description: Demo API documentation generated from DummyJSON.
+  version: 1.0.0
+
+servers:
+  - url: https://dummyjson.com
+
+tags:
+  - name: Users
+    description: User operations
+
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: Get all users
+      description: Returns a paginated list of users.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    UserListResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total:
+          type: integer
+        skip:
+          type: integer
+        limit:
+          type: integer
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: Emily
+        lastName:
+          type: string
+          example: Johnson
+        maidenName:
+          type: string
+          example: Smith
+        age:
+          type: integer
+          example: 28
+        gender:
+          type: string
+          example: female
+        email:
+          type: string
+          format: email
+          example: emily.johnson@x.dummyjson.com
+        phone:
+          type: string
+          example: +1 555-123-4567
+        username:
+          type: string
+          example: emilys
+        birthDate:
+          type: string
+          format: date
+          example: 1996-05-30
+        image:
+          type: string
+          format: uri
