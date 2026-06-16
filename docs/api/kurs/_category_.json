@@ -1,0 +1,9 @@
+{
+    "label": "Kurs API",
+    "position": 4,
+    "link": {
+        "type": "generated-index",
+        "slug": "/docs/api/kurs",
+        "description": "Kurs API Dökümanları"
+    }
+}

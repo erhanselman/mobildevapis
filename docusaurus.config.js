@@ -61,6 +61,13 @@ const config = {
               groupPathsBy: "tag",
             },
           },
+          kursstore: {
+            specPath: "openapi/kurs.yaml",
+            outputDir: "docs/api/kurs",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
         },
       },
     ],
@@ -118,12 +125,12 @@ const config = {
           src: 'img/mobildev-logo.svg',
         },
         items: [
-          /*   {
-              type: 'docSidebar',
-              sidebarId: 'tutorialSidebar',
-              position: 'left',
-              label: 'Tutorial',
-            }, */
+          /*  {
+             type: 'docSidebar',
+             sidebarId: 'tutorialSidebar',
+             position: 'left',
+             label: 'Tutorial',
+           }, */
           /*  { to: '/blog', label: 'Blog', position: 'left' }, */
           /*  {
              href: 'https://github.com/facebook/docusaurus',
