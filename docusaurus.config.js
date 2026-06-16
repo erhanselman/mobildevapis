@@ -11,7 +11,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Mobildev API',
-  tagline: 'Api Dökümanları',
+  tagline: 'Mobildev Api Dökümanları',
   favicon: 'img/mobildev-favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
