@@ -4,22 +4,16 @@ const sidebar: SidebarsConfig = {
   apisidebar: [
     {
       type: "doc",
-      id: "api/dummyjson-users-api-protected",
+      id: "api/egitmen/course-instructor-api",
     },
     {
       type: "category",
-      label: "Users",
+      label: "Instructors",
       items: [
         {
           type: "doc",
-          id: "api/get-all-users",
-          label: "Get all users",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/get-user-by-id",
-          label: "Get user by ID",
+          id: "api/egitmen/get-instructors",
+          label: "Eğitmenleri Listele",
           className: "api-method get",
         },
       ],

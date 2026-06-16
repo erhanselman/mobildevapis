@@ -1,0 +1,9 @@
+{
+    "label": "Dummy API",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "slug": "/api/dummy",
+        "description": "Dummy örnek kodları ve açıklamaları içeren API dokümantasyonu."
+    }
+}

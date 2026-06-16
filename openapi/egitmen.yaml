@@ -1,0 +1,250 @@
+openapi: 3.0.3
+
+info:
+  title: Course Instructor API
+  description: Eğitmen yönetimi ve listeleme servisleri.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+
+servers:
+  - url: https://ucca.mobildev.in
+    description: Production Server
+  - url: https://dev-api.example.com
+    description: Development Server
+
+tags:
+  - name: Instructors
+    description: Eğitmen işlemleri
+
+paths:
+  /api/course/instructor:
+    get:
+      tags:
+        - Instructors
+      summary: Eğitmenleri Listele
+      description: >
+        Filtre, durum ve sayfalama parametrelerine göre eğitmen listesini döndürür.
+      operationId: getInstructors
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstructorListRequest'
+            examples:
+              searchByName:
+                summary: İsme göre filtreleme
+                value:
+                  offset: 0
+                  limit: 10
+                  status: ""
+                  filter: "erhan"
+
+      responses:
+        "200":
+          description: Eğitmen listesi başarıyla getirildi.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstructorListResponse'
+
+        "400":
+          description: Geçersiz istek parametreleri.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+        "500":
+          description: Sunucu hatası.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    InstructorListRequest:
+      type: object
+      properties:
+        offset:
+          type: integer
+          minimum: 0
+          description: Başlangıç kaydı.
+          example: 0
+
+        limit:
+          type: integer
+          minimum: 1
+          description: Döndürülecek maksimum kayıt sayısı.
+          example: 10
+
+        status:
+          type: string
+          description: Eğitmen durumu filtresi.
+          example: ""
+
+        filter:
+          type: string
+          description: Ad, soyad veya e-posta ile arama.
+          example: "erhan"
+
+      required:
+        - offset
+        - limit
+
+    InstructorListResponse:
+      type: object
+      properties:
+        RecordCount:
+          type: integer
+          description: Toplam kayıt sayısı.
+          example: 1
+
+        Result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Instructor'
+
+    Instructor:
+      type: object
+      properties:
+        instructorId:
+          type: integer
+          example: 7
+
+        firstName:
+          type: string
+          example: Erhan
+
+        lastName:
+          type: string
+          example: Selman
+
+        email:
+          type: string
+          format: email
+          example: erhan.selman@mobildev.com
+
+        phone:
+          type: string
+          example: "5334502607"
+
+        title:
+          type: string
+          example: Yazılım Uzmanı
+
+        company:
+          type: string
+          example: Mobildev
+
+        bio:
+          type: string
+          example: Mobildev Yazılım Uzmanı
+
+        avatar:
+          type: string
+          format: uri
+          example: https://media.licdn.com/dms/image/v2/C4D03AQGHOENqT7s-QQ/profile-displayphoto.jpg
+
+        expertise:
+          type: array
+          items:
+            type: string
+          example:
+            - frontend
+            - backend
+            - tester
+
+        socialMedia:
+          type: array
+          items:
+            type: string
+          example: []
+
+        status:
+          type: integer
+          example: 1
+
+        createdAt:
+          type: integer
+          format: int64
+          description: Unix timestamp.
+          example: 1773229523
+
+        createdBy:
+          $ref: '#/components/schemas/User'
+
+        updatedAt:
+          type: integer
+          format: int64
+          description: Unix timestamp.
+          example: 1773229523
+
+        updatedBy:
+          $ref: '#/components/schemas/User'
+
+        stats:
+          $ref: '#/components/schemas/InstructorStats'
+
+    User:
+      type: object
+      properties:
+        userId:
+          type: integer
+          example: 2574
+
+        username:
+          type: string
+          example: erhan.selman
+
+        name:
+          type: string
+          example: Erhan Selman
+
+    InstructorStats:
+      type: object
+      properties:
+        totalCourses:
+          type: integer
+          example: -1
+
+        totalModules:
+          type: integer
+          example: -1
+
+        totalStudents:
+          type: integer
+          example: -1
+
+        totalReviews:
+          type: integer
+          example: -1
+
+        totalIncome:
+          type: number
+          format: double
+          example: 0
+
+        averageRating:
+          type: number
+          example: -1
+
+        completionRate:
+          type: number
+          format: double
+          example: 0
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+
+        message:
+          type: string
+          example: Geçersiz istek parametreleri.

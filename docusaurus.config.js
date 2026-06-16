@@ -49,7 +49,14 @@ const config = {
         config: {
           petstore: {
             specPath: "openapi/dummy4.yaml",
-            outputDir: "docs/api",
+            outputDir: "docs/api/dummy",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          },
+          egitmenstore: {
+            specPath: "openapi/egitmen.yaml",
+            outputDir: "docs/api/egitmen",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
@@ -71,8 +78,8 @@ const config = {
           docItemComponent: '@theme/ApiItem',  /* erhan ekledi */
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          /*   editUrl:
+              'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/', */
         },
         blog: {
           showReadingTime: true,
@@ -123,7 +130,8 @@ const config = {
              label: 'GitHub',
              position: 'right',
            }, */
-          { to: '/docs/api/dummyjson-users-api-protected', label: 'API Dökümanları', position: 'left' },
+          { to: 'docs/api', label: 'API Dökümanları', position: 'left' },
+
         ],
       },
       footer: {

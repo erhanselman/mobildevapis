@@ -1,0 +1,9 @@
+{
+    "label": "Eğitmen API",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "slug": "/api/egitmen",
+        "description": "Eğitmen örnek kodları ve açıklamaları içeren API dokümantasyonu."
+    }
+}
